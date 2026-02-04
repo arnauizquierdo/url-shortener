@@ -4,26 +4,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name="shorturl")
 public class ShortUrl {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private Long userId;
-    private String origintalUrl;
+    private String originalUrl;
     private String shortUrl;
     private LocalDateTime timestamp;
     private Long accessCount;
 
     protected ShortUrl() {}
 
-    public ShortUrl(Long userId, String origintalUrl, String shortUrl) {
+    public ShortUrl(Long userId, String originalUrl, String shortUrl) {
         this.userId = userId;
-        this.origintalUrl = origintalUrl;
+        this.originalUrl = originalUrl;
         this.shortUrl = shortUrl;
         this.timestamp = LocalDateTime.now();
         this.accessCount = 0L;
@@ -41,8 +43,8 @@ public class ShortUrl {
     public Long getAccessCount() {
         return accessCount;
     }
-    public String getOrigintalUrl() {
-        return origintalUrl;
+    public String getoriginalUrl() {
+        return originalUrl;
     }
     public String getShortUrl() {
         return shortUrl;
@@ -51,8 +53,8 @@ public class ShortUrl {
     @Override
     public String toString() {
         return String.format(
-            "ShortUrl[id=%d, userId='%d', origintalUrl='%s', shortUrl='%s', timestamp='%s', accessCount='%d']", 
-            id, userId, origintalUrl, shortUrl, timestamp, accessCount
+            "ShortUrl[id=%d, userId='%d', originalUrl='%s', shortUrl='%s', timestamp='%s', accessCount='%d']", 
+            id, userId, originalUrl, shortUrl, timestamp, accessCount
         );
     }
 
