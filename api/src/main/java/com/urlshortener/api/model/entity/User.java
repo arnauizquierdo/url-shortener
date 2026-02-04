@@ -1,9 +1,13 @@
 package com.urlshortener.api.model.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 
 
 @Entity
@@ -15,6 +19,10 @@ public class User {
     private String username;
     private String password;
 
+    @OneToMany
+    @JoinColumn(name = "id")
+    private List<ShortUrl> shortUrls;
+
     protected User() {}
 
     public User(String username, String password) {
@@ -25,7 +33,7 @@ public class User {
     @Override
     public String toString() {
         return String.format(
-            "Customer[id=%d, username='%s', password='%s']", 
+            "User[id=%d, username='%s', password='%s']", 
             id, username, password
         );
     }
