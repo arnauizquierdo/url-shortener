@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
@@ -15,7 +17,11 @@ public class ShortUrl {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private Long userId;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id")
+    private User user;
+    
     private String originalUrl;
     private String shortUrl;
     private LocalDateTime timestamp;
@@ -23,8 +29,8 @@ public class ShortUrl {
 
     protected ShortUrl() {}
 
-    public ShortUrl(Long userId, String originalUrl, String shortUrl) {
-        this.userId = userId;
+    public ShortUrl(User user, String originalUrl, String shortUrl) {
+        this.user = user;
         this.originalUrl = originalUrl;
         this.shortUrl = shortUrl;
         this.timestamp = LocalDateTime.now();
@@ -34,8 +40,8 @@ public class ShortUrl {
     public Long getId() {
         return id;
     }
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
     public LocalDateTime getTimestamp() {
         return timestamp;
@@ -54,7 +60,7 @@ public class ShortUrl {
     public String toString() {
         return String.format(
             "ShortUrl[id=%d, userId='%d', originalUrl='%s', shortUrl='%s', timestamp='%s', accessCount='%d']", 
-            id, userId, originalUrl, shortUrl, timestamp, accessCount
+            id, user.getId(), originalUrl, shortUrl, timestamp, accessCount
         );
     }
 
