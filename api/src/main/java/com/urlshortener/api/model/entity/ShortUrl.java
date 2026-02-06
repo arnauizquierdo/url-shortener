@@ -55,6 +55,9 @@ public class ShortUrl {
     public String getShortUrl() {
         return shortUrl;
     }
+    public void setAccessCount(Long accessCount) {
+        this.accessCount = accessCount;
+    }
 
     @Override
     public String toString() {

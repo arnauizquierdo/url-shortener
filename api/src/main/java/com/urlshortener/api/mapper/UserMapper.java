@@ -1,10 +1,13 @@
 package com.urlshortener.api.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.urlshortener.api.model.dto.UserCreationDTO;
 import com.urlshortener.api.model.dto.UserDTO;
 import com.urlshortener.api.model.dto.UserWithUrlsDTO;
 import com.urlshortener.api.model.entity.User;
 
+@Component
 public class UserMapper {
 
     public User toUserEntity(UserCreationDTO dto) {

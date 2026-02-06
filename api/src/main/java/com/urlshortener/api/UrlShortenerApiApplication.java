@@ -22,8 +22,10 @@ public class UrlShortenerApiApplication {
 	}
 
 	//Test a few users
-	@Bean
+	/*
+    @Bean
     public CommandLineRunner demo(UserRepository repository1, ShortUrlRepository repository2) {
+        
         return (args) -> {
 
             repository1.save(new User("User12", "123"));
@@ -51,5 +53,6 @@ public class UrlShortenerApiApplication {
 
         };
     }
+    */
 
 }
