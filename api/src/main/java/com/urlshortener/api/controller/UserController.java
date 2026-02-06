@@ -21,7 +21,7 @@ public class UserController {
 
     @GetMapping("/{id}") // Es només una prova. No podem obtenir l'usuari mitjançant l'id, ha de ser mitjaçant token/jwt
     public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
-        return ResponseEntity.ok(userService.getUserById(id));
+        return ResponseEntity.ok(userService.getUserDTOById(id));
     }
 
 }

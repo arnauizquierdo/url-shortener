@@ -4,14 +4,16 @@ public class ShortUrlCreationDTO { // create new shortUrl
 
     private String originalUrl;
 
+    public ShortUrlCreationDTO() {}
+
     public ShortUrlCreationDTO(String originalUrl) {
         this.originalUrl = originalUrl;
     }
 
-    public String getoriginalUrl() {
+    public String getOriginalUrl() {
         return originalUrl;
     }
-    public void setoriginalUrl(String originalUrl) {
+    public void setOriginalUrl(String originalUrl) {
         this.originalUrl = originalUrl;
     }
     

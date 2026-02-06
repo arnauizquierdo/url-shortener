@@ -12,19 +12,19 @@ public class ShortUrlMapper {
 
     public ShortUrlDTO toShortUrlDTO(ShortUrl entity) {
         return new ShortUrlDTO(
-            entity.getoriginalUrl(),
-            entity.getShortUrl(),
+            entity.getOriginalUrl(),
+            entity.getCode(),
             entity.getTimestamp(),
             entity.getAccessCount()
         );
     }
 
     public ShortUrlResolvedDTO toShortUrlResolvedDTO(ShortUrl entity) {
-        return new ShortUrlResolvedDTO(entity.getoriginalUrl());
+        return new ShortUrlResolvedDTO(entity.getOriginalUrl());
     }
 
     public ShortUrl toShortUrlEntity(User user, ShortUrlCreationDTO dto) {
-        return new ShortUrl(user, dto.getoriginalUrl(), null);
+        return new ShortUrl(user, dto.getOriginalUrl(), null);
     }
 
 }

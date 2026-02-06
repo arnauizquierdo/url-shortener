@@ -22,14 +22,14 @@ public class UrlShortenerApiApplication {
 	}
 
 	//Test a few users
-	/*
+	
     @Bean
     public CommandLineRunner demo(UserRepository repository1, ShortUrlRepository repository2) {
         
         return (args) -> {
 
-            repository1.save(new User("User12", "123"));
-            repository1.save(new User("User13", "321"));
+            repository1.save(new User("User55", "123"));
+            repository1.save(new User("User66", "321"));
 
 			logger.info("-------------------------------");
             logger.info("FindAll():");
@@ -37,22 +37,16 @@ public class UrlShortenerApiApplication {
             repository1.findAll().forEach(user -> {
                 logger.info(user.toString());
             });
-			logger.info("-------------------------------");
-            logger.info("FindById():");
-			logger.info("-------------------------------");
-            User user = repository1.findById(1L);
-			logger.info(user.toString());
-            logger.info("\n\n");
 
-            logger.info("Creating some shortUrl:\n");
+            /*logger.info("Creating some shortUrl:\n");
             repository2.save(new ShortUrl(user, "https://es.wikipedia.org", "https://ca.wikipedia.org"));
             repository2.save(new ShortUrl(user, "https://bbc.com", "https://324.cat"));
             repository2.findByUserId(2L).forEach(shortUrl -> {
                 logger.info("\n" + shortUrl.toString() + "\n");
-            });
+            });*/
 
         };
     }
-    */
+    
 
 }

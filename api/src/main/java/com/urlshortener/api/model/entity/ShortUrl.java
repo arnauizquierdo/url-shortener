@@ -1,5 +1,6 @@
 package com.urlshortener.api.model.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,18 +22,20 @@ public class ShortUrl {
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
     private User user;
-    
     private String originalUrl;
-    private String shortUrl;
+
+    @Column(unique = true, nullable = false, length = 10)
+    private String code;
+
     private LocalDateTime timestamp;
     private Long accessCount;
 
     protected ShortUrl() {}
 
-    public ShortUrl(User user, String originalUrl, String shortUrl) {
+    public ShortUrl(User user, String originalUrl, String code) {
         this.user = user;
         this.originalUrl = originalUrl;
-        this.shortUrl = shortUrl;
+        this.code = code;
         this.timestamp = LocalDateTime.now();
         this.accessCount = 0L;
     }
@@ -49,21 +52,24 @@ public class ShortUrl {
     public Long getAccessCount() {
         return accessCount;
     }
-    public String getoriginalUrl() {
+    public String getOriginalUrl() {
         return originalUrl;
     }
-    public String getShortUrl() {
-        return shortUrl;
+    public String getCode() {
+        return code;
     }
     public void setAccessCount(Long accessCount) {
         this.accessCount = accessCount;
+    }
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Override
     public String toString() {
         return String.format(
-            "ShortUrl[id=%d, userId='%d', originalUrl='%s', shortUrl='%s', timestamp='%s', accessCount='%d']", 
-            id, user.getId(), originalUrl, shortUrl, timestamp, accessCount
+            "ShortUrl[id=%d, userId='%d', originalUrl='%s', code='%s', timestamp='%s', accessCount='%d']", 
+            id, user.getId(), originalUrl, code, timestamp, accessCount
         );
     }
 
