@@ -52,8 +52,8 @@ public class ShortUrlServiceImpl implements ShortUrlService{
     }
 
     @Transactional
-    public ShortUrlResolvedDTO resolveShortUrl(Long code) {
-        ShortUrl url = shortUrlRepository.findById(code)
+    public ShortUrlResolvedDTO resolveShortUrl(String code) {
+        ShortUrl url = shortUrlRepository.findByCode(code)
             .orElseThrow(() -> 
                 new EntityNotFoundException("ShortUrl not found with code " + code)
             );

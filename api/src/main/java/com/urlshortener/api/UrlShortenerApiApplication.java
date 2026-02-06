@@ -28,8 +28,8 @@ public class UrlShortenerApiApplication {
         
         return (args) -> {
 
-            repository1.save(new User("User55", "123"));
-            repository1.save(new User("User66", "321"));
+            repository1.save(new User("User556662", "123"));
+            repository1.save(new User("User666662", "321"));
 
 			logger.info("-------------------------------");
             logger.info("FindAll():");

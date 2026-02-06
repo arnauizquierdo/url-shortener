@@ -23,16 +23,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class ShortUrlController {
 
     private final ShortUrlService shortUrlService;
-    private final UserService userService;  // ← Necessites injectar UserService
+    private final UserService userService;
 
     public ShortUrlController(ShortUrlService shortUrlService, UserService userService) {
         this.shortUrlService = shortUrlService;
         this.userService = userService;
     }
 
-    // To-do: change "Long code" -> "String code"
-    @GetMapping("shorten/{code}")
-    public ResponseEntity<ShortUrlResolvedDTO> resolveShortUrl(@PathVariable Long code) {
+    @GetMapping("s/{code}")
+    public ResponseEntity<ShortUrlResolvedDTO> resolveShortUrl(@PathVariable String code) {
         return ResponseEntity.ok(shortUrlService.resolveShortUrl(code));
     }
 

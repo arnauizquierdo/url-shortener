@@ -8,7 +8,7 @@ import com.urlshortener.api.model.entity.User;
 
 public interface ShortUrlService {
 
-    ShortUrlResolvedDTO resolveShortUrl(Long code);
+    ShortUrlResolvedDTO resolveShortUrl(String code);
     ShortUrlDTO createShortUrl(ShortUrlCreationDTO  dto, User user);
 
 } 
