@@ -19,4 +19,6 @@ public interface ShortUrlRepository extends CrudRepository<ShortUrl, Long> {
     
     boolean existsByCode(String code);
 
+    Optional<ShortUrl> findByCodeAndUserId(String code, Long userId);
+
 }

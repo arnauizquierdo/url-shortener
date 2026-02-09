@@ -54,4 +54,14 @@ public class ShortUrlController {
         return ResponseEntity.status(HttpStatus.OK).body(urlsByUser);
     }
 
+    @GetMapping("stats/{code}")                      
+    public ResponseEntity<ShortUrlDTO> getShortUrlStats(@PathVariable String code) {
+        // To-do: 
+        //  - get the user by token/jwt
+        // Provisional: hardcoded with User ID=1
+        User user = userService.getUserById(1L);
+        ShortUrlDTO urlStats = shortUrlService.getUrlStats(code, user.getId());
+        return ResponseEntity.status(HttpStatus.OK).body(urlStats);
+    }
+
 }

@@ -13,5 +13,6 @@ public interface ShortUrlService {
     ShortUrlResolvedDTO resolveShortUrl(String code);
     ShortUrlDTO createShortUrl(ShortUrlCreationDTO  dto, User user);
     List<ShortUrlDTO> getUrlsByUser(Long userId);
+    ShortUrlDTO getUrlStats(String code, Long userId);
 
 } 

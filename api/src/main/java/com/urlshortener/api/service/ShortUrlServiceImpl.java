@@ -97,4 +97,15 @@ public class ShortUrlServiceImpl implements ShortUrlService{
         return shortUrlsByUserDTOs;
     }
 
+    @Transactional(readOnly = true)
+    public ShortUrlDTO getUrlStats(String code, Long userId) {
+        //To-do: get user with (token/jwt)
+        //Provisional: hardcoded
+        ShortUrl shortUrl = shortUrlRepository.findByCodeAndUserId(code, userId)
+            .orElseThrow(() -> 
+                new EntityNotFoundException("ShortUrl not found with code " + code + " for user " + userId)
+            );
+        return shortUrlMapper.toShortUrlDTO(shortUrl);
+    }
+
 } 
