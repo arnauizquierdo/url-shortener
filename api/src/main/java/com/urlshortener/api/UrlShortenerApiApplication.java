@@ -28,7 +28,7 @@ public class UrlShortenerApiApplication {
         
         return (args) -> {
 
-            repository1.save(new User("User556662", "123"));
+            /*repository1.save(new User("User556662", "123"));
             repository1.save(new User("User666662", "321"));
 
 			logger.info("-------------------------------");
@@ -36,7 +36,7 @@ public class UrlShortenerApiApplication {
 			logger.info("-------------------------------");
             repository1.findAll().forEach(user -> {
                 logger.info(user.toString());
-            });
+            });*/
 
             /*logger.info("Creating some shortUrl:\n");
             repository2.save(new ShortUrl(user, "https://es.wikipedia.org", "https://ca.wikipedia.org"));

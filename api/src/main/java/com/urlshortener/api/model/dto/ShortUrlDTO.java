@@ -16,10 +16,10 @@ public class ShortUrlDTO { // show shortUrl
         this.accessCount = accessCount;
     }
 
-    public String getoriginalUrl() {
+    public String getOriginalUrl() {
         return originalUrl;
     }
-    public void setoriginalUrl(String originalUrl) {
+    public void setOriginalUrl(String originalUrl) {
         this.originalUrl = originalUrl;
     }
     public String getShortUrl() {

@@ -64,6 +64,9 @@ public class ShortUrl {
     public void setCode(String code) {
         this.code = code;
     }
+    public void setOriginalUrl(String originalUrl) {
+        this.originalUrl = originalUrl;
+    }
 
     @Override
     public String toString() {

@@ -1,5 +1,7 @@
 package com.urlshortener.api.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -81,6 +83,18 @@ public class ShortUrlServiceImpl implements ShortUrlService{
             }
         } while (shortUrlRepository.existsByCode(code));
         return code;
+    }
+
+    @Transactional(readOnly = true)
+    public List<ShortUrlDTO> getUrlsByUser(Long userId) {
+        //To-do: get user with (token/jwt)
+        //Provisional: hardcoded
+        List<ShortUrl> shortUrlsByUser = shortUrlRepository.findByUserId(userId);
+        List<ShortUrlDTO> shortUrlsByUserDTOs = new ArrayList<ShortUrlDTO>();
+        for (ShortUrl shortUrl : shortUrlsByUser) {
+            shortUrlsByUserDTOs.add(shortUrlMapper.toShortUrlDTO(shortUrl));
+        }
+        return shortUrlsByUserDTOs;
     }
 
 } 
