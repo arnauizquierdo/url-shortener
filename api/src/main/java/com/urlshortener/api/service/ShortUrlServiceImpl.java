@@ -108,4 +108,13 @@ public class ShortUrlServiceImpl implements ShortUrlService{
         return shortUrlMapper.toShortUrlDTO(shortUrl);
     }
 
+    @Transactional
+    public void deleteShortUrl(String code, Long userId) {
+        ShortUrl shortUrl = shortUrlRepository.findByCodeAndUserId(code, userId)
+            .orElseThrow(() -> 
+                new EntityNotFoundException("ShortUrl not found with code " + code + " for user " + userId)
+            );
+        shortUrlRepository.delete(shortUrl);
+    }
+
 } 

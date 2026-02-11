@@ -3,6 +3,7 @@ package com.urlshortener.api.controller;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,6 +63,16 @@ public class ShortUrlController {
         User user = userService.getUserById(1L);
         ShortUrlDTO urlStats = shortUrlService.getUrlStats(code, user.getId());
         return ResponseEntity.status(HttpStatus.OK).body(urlStats);
+    }
+
+    @DeleteMapping("delete/{code}")
+    public HttpStatus deleteShortUrl(@PathVariable String code) {
+        // To-do: 
+        //  - get the user by token/jwt
+        // Provisional: hardcoded with User ID=1
+        User user = userService.getUserById(1L);
+        shortUrlService.deleteShortUrl(code, user.getId());
+        return HttpStatus.OK;
     }
 
 }

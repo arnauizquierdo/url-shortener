@@ -14,5 +14,6 @@ public interface ShortUrlService {
     ShortUrlDTO createShortUrl(ShortUrlCreationDTO  dto, User user);
     List<ShortUrlDTO> getUrlsByUser(Long userId);
     ShortUrlDTO getUrlStats(String code, Long userId);
+    void deleteShortUrl(String code, Long userId);
 
 } 
