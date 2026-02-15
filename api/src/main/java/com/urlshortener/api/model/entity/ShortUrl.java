@@ -22,6 +22,8 @@ public class ShortUrl {
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Column(columnDefinition = "longtext")
     private String originalUrl;
 
     @Column(unique = true, nullable = false, length = 10)

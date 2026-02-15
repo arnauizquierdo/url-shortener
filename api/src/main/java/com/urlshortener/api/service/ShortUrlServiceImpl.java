@@ -87,8 +87,6 @@ public class ShortUrlServiceImpl implements ShortUrlService{
 
     @Transactional(readOnly = true)
     public List<ShortUrlDTO> getUrlsByUser(Long userId) {
-        //To-do: get user with (token/jwt)
-        //Provisional: hardcoded
         List<ShortUrl> shortUrlsByUser = shortUrlRepository.findByUserId(userId);
         List<ShortUrlDTO> shortUrlsByUserDTOs = new ArrayList<ShortUrlDTO>();
         for (ShortUrl shortUrl : shortUrlsByUser) {

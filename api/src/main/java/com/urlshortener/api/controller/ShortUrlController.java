@@ -40,11 +40,9 @@ public class ShortUrlController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newShortUrl);
     }
 
-    @GetMapping("userurls")                      //@AuthenticationPrincipal UserDetails userDetails
-    public ResponseEntity<List<ShortUrlDTO>> getUserUrls() {
-        // To-do: get the user by token/jwt
-        // Provisional: hardcoded with User ID=1
-        User user = userService.getUserById(1L);
+    @GetMapping("myurls") // get all user's urls with their stats
+    public ResponseEntity<List<ShortUrlDTO>> getUserUrls(Authentication authentication) {
+        User user = userService.getUserByUsername(authentication.getName());
         List<ShortUrlDTO> urlsByUser = shortUrlService.getUrlsByUser(user.getId());
         return ResponseEntity.status(HttpStatus.OK).body(urlsByUser);
     }
