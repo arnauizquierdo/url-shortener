@@ -51,15 +51,15 @@ public class AuthServiceImpl implements AuthService{
     }
 
     public void register(UserCreationDTO request) {
-        // Validar que l'email no existeix
-        if (userRepository.findByUsername(request.getUsername()).isPresent()) {
+        // Check username is new
+        if (userRepository.findByUsername(request.username()).isPresent()) {
             throw new RuntimeException("Email already exists");
         }
 
-        // Crear nou usuari
-        User user = new User(request.getUsername(), passwordEncoder.encode(request.getPassword()));
+        // Create the new user
+        User user = new User(request.username(), passwordEncoder.encode(request.password()));
         
         userRepository.save(user);
-        log.info("User registered successfully: {}", request.getUsername());
+        log.info("User registered successfully: {}", request.username());
     }
 }

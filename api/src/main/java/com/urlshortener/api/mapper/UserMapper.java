@@ -12,8 +12,8 @@ public class UserMapper {
 
     public User toUserEntity(UserCreationDTO dto) {
         return new User(
-            dto.getUsername(),
-            dto.getPassword()
+            dto.username(),
+            dto.password()
         );
     }
 
