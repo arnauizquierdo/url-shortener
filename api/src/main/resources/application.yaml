@@ -1,3 +1,7 @@
+jwt:
+  secret: jkf63hvns9eu7f24n23vselnvf2gs5uew434yatdcba24133y4xv2tdkadc8aknyvklaw7da2576c52ac75v7a2c
+  expiration: 3600
+
 spring:
   application:
     name: URL Shortener API

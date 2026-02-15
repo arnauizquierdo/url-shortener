@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 
 import com.urlshortener.api.model.entity.ShortUrl;
@@ -13,6 +14,7 @@ import com.urlshortener.api.repository.ShortUrlRepository;
 import com.urlshortener.api.repository.UserRepository;
 
 @SpringBootApplication
+@ConfigurationPropertiesScan
 public class UrlShortenerApiApplication {
 
 	private static final Logger logger = LoggerFactory.getLogger(UrlShortenerApiApplication.class);

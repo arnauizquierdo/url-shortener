@@ -32,11 +32,6 @@ public class ShortUrlController {
         this.userService = userService;
     }
 
-    @GetMapping("s/{code}")
-    public ResponseEntity<ShortUrlResolvedDTO> resolveShortUrl(@PathVariable String code) {
-        return ResponseEntity.ok(shortUrlService.resolveShortUrl(code));
-    }
-
     @PostMapping("create")
     public ResponseEntity<ShortUrlDTO> createShortUrl(@RequestBody ShortUrlCreationDTO dto) {
         // To-do: get the user by token/jwt
