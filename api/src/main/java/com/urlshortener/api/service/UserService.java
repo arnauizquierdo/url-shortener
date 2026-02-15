@@ -7,4 +7,6 @@ public interface UserService {
 
     UserDTO getUserDTOById(Long id);
     User getUserById(Long id);
+    User getUserByUsername(String username);
+    
 }

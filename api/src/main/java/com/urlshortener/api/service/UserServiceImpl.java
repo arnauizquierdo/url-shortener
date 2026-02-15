@@ -36,4 +36,10 @@ public class UserServiceImpl implements UserService{
         return userMapper.toUserDTO(newUser);
     }
 
+    @Override
+    public User getUserByUsername(String username) {
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new EntityNotFoundException("User not found with username " + username));
+        return user;
+    }
+
 }
