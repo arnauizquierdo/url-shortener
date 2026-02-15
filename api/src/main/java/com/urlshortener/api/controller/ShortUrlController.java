@@ -55,11 +55,8 @@ public class ShortUrlController {
     }
 
     @DeleteMapping("delete/{code}")
-    public HttpStatus deleteShortUrl(@PathVariable String code) {
-        // To-do: 
-        //  - get the user by token/jwt
-        // Provisional: hardcoded with User ID=1
-        User user = userService.getUserById(1L);
+    public HttpStatus deleteShortUrl(@PathVariable String code, Authentication authentication) {
+        User user = userService.getUserByUsername(authentication.getName());
         shortUrlService.deleteShortUrl(code, user.getId());
         return HttpStatus.OK;
     }
