@@ -20,21 +20,10 @@ public class UserServiceImpl implements UserService{
         this.userMapper= userMapper;
     }
 
-    public UserDTO getUserDTOById(Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
+    @Override
+    public UserDTO getUserDTO(User user) {
         return userMapper.toUserDTO(user);
-    }
-
-    public User getUserById(Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
-        return user;
-    }
-
-    public UserDTO createNewUser(String username, String password) {
-        User newUser = new User(username, password);
-        userRepository.save(newUser);
-        return userMapper.toUserDTO(newUser);
-    }
+    }    
 
     @Override
     public User getUserByUsername(String username) {
