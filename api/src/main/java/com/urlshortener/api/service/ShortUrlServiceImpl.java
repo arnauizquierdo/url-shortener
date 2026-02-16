@@ -19,25 +19,6 @@ import com.urlshortener.api.util.ShortUrlCodeGenerator;
 
 import jakarta.persistence.EntityNotFoundException;
 
-/*
-    - Lògica real al ShortUrlService -
-
-    El Service hauria de fer com a mínim:
-
-        Buscar la ShortUrl pel codi
-
-        Comprovar que existeix
-
-        Incrementar accessCount
-
-        Guardar
-
-        Retornar DTO
-
-    - @Transactional al ShortUrlService - 
-    
-*/
-
 @Service
 public class ShortUrlServiceImpl implements ShortUrlService{
 
