@@ -12,6 +12,7 @@ import com.urlshortener.api.exception.UnauthorizedOperationException;
 import com.urlshortener.api.exception.UrlAlreadyExistsException;
 import com.urlshortener.api.exception.UrlNotFoundException;
 import com.urlshortener.api.exception.UrlShortenerException;
+import com.urlshortener.api.exception.UserAlreadyExistsException;
 import com.urlshortener.api.exception.UserNotFoundException;
 
 @RestControllerAdvice
@@ -52,4 +53,10 @@ public class GlobalExceptionHandler {
         ex.printStackTrace();
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "Internal server error"));
     }
+
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<Map<String, String>> handleUserAlreadyExists(UserAlreadyExistsException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", "User already exists"));
+    }
+
 }

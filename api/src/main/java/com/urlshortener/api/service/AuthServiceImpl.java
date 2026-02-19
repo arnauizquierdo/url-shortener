@@ -9,6 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.urlshortener.api.model.dto.UserCreationDTO;
+import com.urlshortener.api.exception.InvalidCredentialsException;
+import com.urlshortener.api.exception.UserAlreadyExistsException;
+import com.urlshortener.api.exception.UserNotFoundException;
 import com.urlshortener.api.model.dto.TokenRequestDTO;
 import com.urlshortener.api.model.dto.TokenResponseDTO;
 import com.urlshortener.api.model.entity.User;
@@ -37,12 +40,12 @@ public class AuthServiceImpl implements AuthService{
             userDetails = userDetailsService.loadUserByUsername(request.username());
         } catch (UsernameNotFoundException e) {
             log.error("User not found: {}", request.username());
-            throw new RuntimeException("Invalid credentials");
+            throw new UserNotFoundException(request.username());
         }
 
         if (!passwordEncoder.matches(request.password(), userDetails.getPassword())) {
             log.error("Password mismatch for user: {}", request.username());
-            throw new RuntimeException("Invalid credentials");
+            throw new InvalidCredentialsException();
         }
 
         String token = tokenService.generateToken(userDetails.getUsername());
@@ -53,7 +56,8 @@ public class AuthServiceImpl implements AuthService{
     public void register(UserCreationDTO request) {
         // Check username is new
         if (userRepository.findByUsername(request.username()).isPresent()) {
-            throw new RuntimeException("Email already exists");
+            log.error("Username already exists: ", request.username());
+            throw new UserAlreadyExistsException(request.username());
         }
 
         // Create the new user
