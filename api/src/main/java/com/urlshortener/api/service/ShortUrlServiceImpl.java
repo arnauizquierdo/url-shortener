@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.urlshortener.api.exception.UrlNotFoundException;
 import com.urlshortener.api.mapper.ShortUrlMapper;
 import com.urlshortener.api.model.dto.ShortUrlCreationDTO;
 import com.urlshortener.api.model.dto.ShortUrlDTO;
@@ -37,9 +38,9 @@ public class ShortUrlServiceImpl implements ShortUrlService{
     @Transactional
     public ShortUrlResolvedDTO resolveShortUrl(String code) {
         ShortUrl url = shortUrlRepository.findByCode(code)
-            .orElseThrow(() -> 
-                new EntityNotFoundException("ShortUrl not found with code " + code)
-            );
+                            .orElseThrow(() -> 
+                                new UrlNotFoundException(code)
+                            );
         url.setAccessCount(url.getAccessCount() + 1);
         return shortUrlMapper.toShortUrlResolvedDTO(url);
     }
