@@ -90,7 +90,7 @@ public class ShortUrlServiceImpl implements ShortUrlService{
     public void deleteShortUrl(String code, Long userId) {
         ShortUrl shortUrl = shortUrlRepository.findByCodeAndUserId(code, userId)
             .orElseThrow(() -> 
-                new EntityNotFoundException("ShortUrl not found with code " + code + " for user " + userId)
+                new UrlNotFoundException("ShortUrl not found with code " + code + " for user " + userId)
             );
         shortUrlRepository.delete(shortUrl);
     }
