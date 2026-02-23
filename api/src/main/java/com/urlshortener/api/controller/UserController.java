@@ -10,8 +10,11 @@ import com.urlshortener.api.model.dto.UserDTO;
 import com.urlshortener.api.model.entity.User;
 import com.urlshortener.api.service.UserService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @RequestMapping("/api/user")
+@SecurityRequirement(name = "Bearer Authentication")
 public class UserController {
 
     private final UserService userService;
