@@ -1,0 +1,9 @@
+jwt:
+  secret: exampleofaverybigsecretkeyfortestingpurposes89172389127389172391928371293712893719283
+  expiration: 3600
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
