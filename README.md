@@ -14,6 +14,7 @@ Backend REST API for shortening URLs, managing user links and secured with JWT.
 - [🐳 Docker Setup](#-docker-setup)
 - [🧪 Testing](#-testing)
 - [🚀 Quickstart](#-quickstart)
+- [📜 License](#-license)
 
 ## ✨ Key Features
 
@@ -266,3 +267,7 @@ This command will:
 API base URL: ```http://localhost:8080```
 
 Swagger UI: ```http://localhost:8080/swagger-ui/index.html```
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details
