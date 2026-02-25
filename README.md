@@ -4,19 +4,19 @@ Backend REST API for shortening URLs, managing user links and secured with JWT.
 
 **Main stack:** Java 21 · Spring Boot · Spring Security (JWT) · MySQL · Docker · Testcontainers, Swagger UI.
 
-## 📑 Contents
+## Contents
 
-- [✨ Key Features](#-key-features)
-- [🧰 Tech Stack](#-tech-stack)
-- [🧱 Architecture Overview](#-architecture-overview)
-- [🔐 Security - JWT Flow](#-security--jwt-flow)
-- [📚 Swagger / OpenAPI](#-swagger--openapi)
-- [🐳 Docker Setup](#-docker-setup)
-- [🧪 Testing](#-testing)
-- [🚀 Quickstart](#-quickstart)
-- [📜 License](#-license)
+- [Key Features](#key-features)
+- [Tech Stack](#tech-stack)
+- [Architecture Overview](#architecture-overview)
+- [Security / JWT Flow + endpoints](#security--jwt-flow--endpoints)
+- [Swagger / OpenAPI](#swagger--openapi)
+- [Docker Setup](#docker-setup)
+- [Testing](#testing)
+- [Quickstart](#quickstart)
+- [License](#license)
 
-## ✨ Key Features
+## Key Features
 
 - Stateless authentication and authorization with JWT
 - Secure short URL generation
@@ -24,9 +24,9 @@ Backend REST API for shortening URLs, managing user links and secured with JWT.
 - Layered architecture (Controller / Service / Repository / DTOs)
 - Fully dockerized environment (multi-stage build)
 - Unit and integration testing (Mockito + Testcontainers)
-- Interactive API documentation with Swagger/OpenAPI
+- API documentation with Swagger/OpenAPI
 
-## 🧰 Tech Stack
+## Tech Stack
 
 ### Backend
 - Java 21
@@ -55,9 +55,9 @@ Backend REST API for shortening URLs, managing user links and secured with JWT.
 ### Documentation
 - Springdoc OpenAPI (Swagger UI)
 
-## 🧱 Architecture Overview
+## Architecture Overview
 
-The application follows a **layered architecture** that promotes separation of concerns, testability and maintainability.
+The application follows a **layered architecture** that promotes separation of concerns and modularity.
 
 ### Architecture Style
 
@@ -86,7 +86,7 @@ com.urlshortener.api
 ``` mermaid
 flowchart LR
 
-    User[🧑 User]
+    User[User]
 
     Browser[Web Client]
 
@@ -125,7 +125,7 @@ flowchart LR
     style DB fill:#C8F7C1,stroke:#96EB88,stroke-width:2px
 ```
 
-## 🔐 Security / JWT Flow
+## Security / JWT Flow + endpoints
 
 The application uses **stateless authentication with JSON Web Tokens (JWT)** implemented via Spring Security OAuth2 Resource Server.
 
@@ -142,19 +142,20 @@ The application uses **stateless authentication with JSON Web Tokens (JWT)** imp
 
 | Public endpoints | Protected endpoints |
 |------------------|---------------------|
-| `/login`         | URL creation        |
-| `/register`      | URL deletion        |
-| `/{code}` (URL redirection) | URL access stats |
-| Swagger endpoints | User URLs listing  |
+| `/login`         | `/api/urls/create`        |
+| `/register`      | `/api/urls/delete/{code}`        |
+| `/short/{code}` (URL redirection) | `/api/urls/myurls` |
+| Swagger endpoints | `/api/urls/stats/{code}`  |
+|                   | `/api/urls/account`  |
 
 ### Key security components
 
-- ✅ `SecurityFilterChain`
-- ✅ `JwtEncoder` / `JwtDecoder`
-- ✅ `BCryptPasswordEncoder`
-- ✅ `Custom AuthService`
+- `SecurityFilterChain`
+- `JwtEncoder` / `JwtDecoder`
+- `BCryptPasswordEncoder`
+- `Custom AuthService`
 
-## 📚 Swagger / OpenAPI
+## Swagger / OpenAPI
 
 The API is documented using **Springdoc OpenAPI** and exposed through Swagger UI for easy exploration and testing.
 
@@ -170,7 +171,7 @@ Once the application is running, the documentation is available at:
   <code>http://localhost:8080/swagger-ui/index.html</code>
 </p>
 
-## 🐳 Docker Setup
+## Docker Setup
 
 The application is fully containerized using Docker and orchestrated with Docker Compose to provide a reproducible local environment.
 
@@ -195,9 +196,9 @@ The application is fully containerized using Docker and orchestrated with Docker
 
 Using environment variables, including: database connection, JWT secret and expiration and credentials.
 
-(*See 'Quickstart' section*).
+*(See [Quickstart](#quickstart) section)*.
 
-## 🧪 Testing
+## Testing
 
 The project includes **both unit and integration tests** to validate business logic and ensure the application behaves correctly in a realistic environment.
 
@@ -215,7 +216,7 @@ Integration tests run against a real MySQL instance using **Testcontainers**.
 
 Testcontainers automatically start and take down the database container during the test lifecycle, ensuring clean and reliable executions.
 
-## 🚀 Quickstart
+## Quickstart
 
 Get the project running locally in a few simple steps.
 
@@ -268,6 +269,6 @@ API base URL: ```http://localhost:8080```
 
 Swagger UI: ```http://localhost:8080/swagger-ui/index.html```
 
-## 📜 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details
