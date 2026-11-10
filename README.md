@@ -1,8 +1,18 @@
 # Url Shortener - API
 
-Backend REST API for shortening URLs, managing user links and secured with JWT.
+<p align="center">
+    <em>Backend REST API for shortening URLs, managing user links and secured with JWT.</em>
+</p>
 
-**Main stack:** Java 21 · Spring Boot · Spring Security (JWT) · MySQL · Docker · Testcontainers, Swagger UI.
+<p align="center">
+    <img src="https://img.shields.io/badge/Java-21-orange?logo=openjdk" />
+    <img src="https://img.shields.io/badge/Spring_Security-JWT-6DB33F?logo=springsecurity" />
+    <img src="https://img.shields.io/badge/Docker-Containerization-2496ED?logo=docker" />
+    <img src="https://img.shields.io/badge/Spring_Boot-Framework-6DB33F?logo=springboot" />
+    <img src="https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql" />
+    <img src="https://img.shields.io/badge/Testcontainers-Testing-2496ED?logo=testcontainers" />
+    <img src="https://img.shields.io/badge/Swagger_UI-OpenAPI-85EA2D?logo=swagger" />
+</p>
 
 ## Contents
 
@@ -28,32 +38,14 @@ Backend REST API for shortening URLs, managing user links and secured with JWT.
 
 ## Tech Stack
 
-### Backend
-- Java 21
-- Spring Boot
-- Spring Web
-- Spring Data JPA
-- Hibernate
-
-### Security
-- Spring Security
-- JWT (Nimbus)
-- BCrypt password hashing
-
-### Database
-- MySQL 8
-
-### Testing
-- JUnit 5
-- Mockito
-- Testcontainers
-
-### DevOps
-- Docker Compose
-- Multi-stage build
-
-### Documentation
-- Springdoc OpenAPI (Swagger UI)
+| Category | Technologies |
+|---|---|
+| **Backend** | Java 21, Spring Boot, Spring Web, Spring Data JPA, Hibernate |
+| **Security** | Spring Security, JWT (Nimbus), BCrypt |
+| **Database** | MySQL 8 |
+| **Testing** | JUnit 5, Mockito, Testcontainers |
+| **DevOps** | Docker Compose, Multi-stage Build |
+| **Documentation** | Springdoc OpenAPI (Swagger UI) |
 
 ## Architecture Overview
 
